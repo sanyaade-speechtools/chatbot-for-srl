@@ -8,6 +8,7 @@
 <!-- Load standard AIML set -->
 <learn>standard/std-65percent.aiml</learn>
 <learn>standard/std-atomic.aiml</learn>
+<learn>standard/std-learning.aiml</learn>
 <learn>standard/std-botmaster.aiml</learn>
 <learn>standard/std-brain.aiml</learn>
 <learn>standard/std-connect.aiml</learn>
