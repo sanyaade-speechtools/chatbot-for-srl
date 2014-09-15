@@ -67,7 +67,7 @@ class PatternMgr:
 		except Exception, e:
 			print "Error restoring PatternMgr from file %s:" % filename
 			raise Exception, e
-
+#EX:(u'HOW ARE YOU', u'*', u'*')   ['template', {}, ['text', {'xml:space': 'default'}, u'\nFINE THANK YOU!\n']]
 	def add(self, (pattern,that,topic), template):
 		"""Add a [pattern/that/topic] tuple and its corresponding template
 		to the node tree.
@@ -78,7 +78,7 @@ class PatternMgr:
 
 		# Navigate through the node tree to the template's location, adding
 		# nodes if necessary.
-		node = self._root
+		node = self._root #ROOT IS A DICT
 		for word in string.split(pattern):
 			key = word
 			if key == u"_":
@@ -121,7 +121,7 @@ class PatternMgr:
 					node[key] = {}
 				node = node[key]
 
-
+        #(u'HOW ARE YOU', u'*', u'*')   ['template', {}, ['text', {'xml:space': 'default'}, u'\nFINE THANK YOU!\n']]
 		# add the template.
 		if not node.has_key(self._TEMPLATE):
 			self._templateCount += 1	
