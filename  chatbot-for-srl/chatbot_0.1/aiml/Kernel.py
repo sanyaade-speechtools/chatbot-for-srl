@@ -279,6 +279,9 @@ class Kernel:
         will be loaded and learned.
 
         """
+        #learn something given by test
+        #(u'HOW ARE YOU', u'*', u'*')   ['template', {}, ['text', {'xml:space': 'default'}, u'\nFINE THANK YOU!\n']]
+        #self._brain.add((u'HOW ARE YOU', u'*', u'*'), ['template', {}, ['text', {'xml:space': 'default'}, u'\nFINE THANK YOU!\n']])
         for f in glob.glob(filename):
             if self._verboseMode: print "Loading %s..." % f,
             start = time.clock()
@@ -294,6 +297,8 @@ class Kernel:
             # store the pattern/template pairs in the PatternMgr.
             for key,tem in handler.categories.items():
                 self._brain.add(key,tem)
+            #   print 'key & tem',key,' ',tem
+            
             # Parsing was successful.
             if self._verboseMode:
                 print "done (%.2f seconds)" % (time.clock() - start)
@@ -381,8 +386,9 @@ class Kernel:
 
         # fetch the current topic
         topic = self.getPredicate("topic", sessionID)
+        #print 'current topic is:',topic
         subbedTopic = self._subbers['normal'].sub(topic)
-
+        
         # Determine the final response.
         response = ""
         elem = self._brain.match(subbedInput, subbedThat, subbedTopic)
@@ -672,6 +678,7 @@ class Kernel:
         filename = ""
         for e in elem[2:]:
             filename += self._processElement(e, sessionID)
+        print 'filename:',filename
         self.learn(filename)
         return ""
 
