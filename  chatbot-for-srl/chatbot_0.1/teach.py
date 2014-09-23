@@ -15,9 +15,9 @@ class Teacher(object):
         print 'So it is time for you to teach me how to answer that question \'',lastestInput,'\''
         #Andriod is an OS
         inputText=raw_input('>')
-        lastestInput=lastestInput.upper()
-        self._kernal._brain.add((u''+lastestInput, u'*', u'*'), 
+        UpperlastestInput=lastestInput.upper()
+        self._kernal._brain.add((u''+UpperlastestInput, u'*', u'*'), 
                                 ['template', {}, ['text', {'xml:space': 'default'}, u''+inputText]])
         # self._brain.add((u'HOW ARE YOU', u'*', u'*'), ['template', {}, ['text', {'xml:space': 'default'}, u'\nFINE THANK YOU!\n']])
-        print 'Okay!I have remebered that,please try to ask that question again.'    
+        print 'Okay!I have remebered that,please try to ask me\'',lastestInput,'\'again.'    
         

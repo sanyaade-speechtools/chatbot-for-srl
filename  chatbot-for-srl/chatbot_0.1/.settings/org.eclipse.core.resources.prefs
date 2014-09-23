@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
 encoding//aiml/Kernel.py=latin1
 encoding/talking.py=utf-8
+encoding/tcp.py=utf-8
 encoding/teach.py=utf-8
+encoding/udp.py=utf-8
