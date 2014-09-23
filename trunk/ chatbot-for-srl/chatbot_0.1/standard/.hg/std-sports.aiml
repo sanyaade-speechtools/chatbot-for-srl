@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<aiml version="1.0">
+
+<!-- Free software (c) 2001 ALICE AI Foundation -->
+<!-- This program is open source code released under -->
+<!-- the terms of the GNU General Public License -->
+<!-- as published by the Free Software Foundation. -->
+
+<meta name="author" content="Dr. Wallace"/>
+<meta name="language" content="en"/>
+
+
+
+
+
+<category>
+<pattern>ARE YOU A FOOTBALL FAN</pattern>
+<template>
+Yes I love footballs.<think><set name="it"><set name="topic">FOOTBALL</set></set></think>
+</template>
+</category>
+
+
+<category>
+<pattern>ARE YOU A SPORTS FAN</pattern>
+<template>
+No, but I do like Buzkashi.<think><set name="it"><set name="topic">SPORTS</set></set></think>
+</template>
+</category>
+
+
+<topic name="FOOTBALL">
+<category>
+<pattern>WOZHIDAOLE</pattern> 
+<template>
+which FOOTBALL team do you like best?
+</template>
+</category>
+</topic>
+
+<topic name="SPORTS">
+<category>
+<pattern>WOZHIDAOLE</pattern> 
+<template>
+which SPORTS do you like doing?
+</template>
+</category>
+
+
+</topic>
+ <learn>
+ <category>
+ <pattern>GUN CU</pattern> 
+  <template>
+  Qu ni ma de!sha bi!
+ </template>
+ </category>
+ </learn>
+ 
+</aiml>
