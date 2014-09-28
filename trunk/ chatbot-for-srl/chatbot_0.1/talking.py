@@ -10,9 +10,10 @@ import threading
 class Talk(object):
     def __init__(self,kernal):
         self._kernal=kernal
-        #这里的action要在C++映射成不同的动作
-        self._actionDict={'sad':100,'happy':101,'angry':102,'sorry':103,
-                          'hug':104,'bye':105,'nod':106,'hand':107,'leg':108}
+        #这里的action要在C++映射成不同的动作100 happy 101 node 106 
+        self._actionDict={'sad':100,'happy':101,'angry':100,'sorry':100,
+                          'hug':100,'bye':106,'nod':106,'leg':101,
+                          'handsome':106,'miss':100}
     def getKernal(self):
         return self._kernal
     def init(self):
@@ -33,19 +34,27 @@ class Talk(object):
                 print 'Exit successfully!'
                 break
             elif action:
-                t = threading.Thread(target=self.sendAnAction(str(action)+'\0', '172.29.35.247',5050), name='SendActionThread')
+                response=self._kernal.respond(inputText);
+                message=str(action)+response;
+                t = threading.Thread(target=self.sendMessage(message+'\0', '172.29.35.247',5050), name='SendMessageThread')
                 t.start()
                 t.join()
-                print self._kernal.respond(inputText)
+                print response
             elif inputText=='bad answer':
                 teacher=teach.Teacher(self._kernal)
                 teacher.teach()
             else:
-                print self._kernal.respond(inputText)
-    def sendAnAction(self,action,ipAddr,port):
+                response=self._kernal.respond(inputText);
+                message='000'+response;
+                t = threading.Thread(target=self.sendMessage(message+'\0', '172.29.35.247',5050), name='SendMessageThread')
+                t.start()
+                t.join()
+                print response
+   
+    def sendMessage(self,message,ipAddr,port):
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.sendto(action,(ipAddr, port))
-        s.close()
+        s.sendto(message,(ipAddr, port))
+        s.close()     
         
     def findActionInDict(self,inputText):
         for d,x in self._actionDict.items():
@@ -53,6 +62,6 @@ class Talk(object):
                 #print 'Action:',d
                 #print 'ActionCode',x
                 return x
-        
             
+
             

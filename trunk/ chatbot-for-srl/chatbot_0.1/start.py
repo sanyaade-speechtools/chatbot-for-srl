@@ -22,5 +22,9 @@ count=int(userNum)
 while True:
     print  k.respond(raw_input('>'), userName[(count%int(userNum))])
     count+=1
-
+my name is eko
+I am a man
+do you know Daisy? 
+she is now in USA and I really miss her.
+do you like Daisy?  
 '''
