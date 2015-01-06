@@ -3,12 +3,16 @@
 '''
 import aiml
 import talking
+import mobile
 k = aiml.Kernel()
 
 talker=talking.Talk(k)
 talker.loadBrain('standard.brn')
 #talker.init()
+m=mobile.mobile(talker)
+m.startMobile()
 talker.startTalking()
+
 #k.saveBrain("standard.brn")
 #k.loadBrain('standard.brn')
 '''
